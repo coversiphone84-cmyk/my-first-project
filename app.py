@@ -6,7 +6,7 @@ st.set_page_config(page_title="Usman's Chatbot", layout="centered")
 st.title("🤖 Usman ka Apna AI Chatbot")
 
 
-API_KEY = "AQ.Ab8RN6ItvF-3BTRF0aB567GD0dBRtyavnDscN_voowIm6B45yQ"
+API_KEY = "AQ.Ab8RN6Lbw9fDi_7ElsDsnVQoPXKlY_rg19YMZk_uj1z2Wfb2JA"
 
 # Client initialize karein
 if "client" not in st.session_state:
