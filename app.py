@@ -5,7 +5,6 @@ from google import genai
 st.set_page_config(page_title="Usman's Chatbot", layout="centered")
 st.title("🤖 Usman ka Apna AI Chatbot")
 
-
 API_KEY = "AQ.Ab8RN6LNtkwpiCicdHc6HXmPWxlkDono2fxSVBfonIBuEA2Sug"
 
 # Client initialize karein
