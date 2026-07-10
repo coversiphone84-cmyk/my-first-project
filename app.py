@@ -1,45 +1,38 @@
 import streamlit as st
 from google import genai
 
+# Page setting
 st.set_page_config(page_title="Usman's Chatbot", layout="centered")
 st.title("🤖 Usman ka Apna AI Chatbot")
 
-# Aapki wahi naye wali key
-API_KEY = "AQ.Ab8RN6LwrFvibxAlTNao6xrLlXHzM_z51RVt8rUcZEqwKFuzGg"
+API_KEY = "AQ.Ab8RN6Il6JMxDaUzbdN0Dc5b2h5JEjj-dk2IcX4W_A1vX8_A6Q"
 
-# Client setup naye token ke mutabiq
+
 if "client" not in st.session_state:
-    st.session_state.client = genai.Client(
-        api_key=API_KEY, 
-        http_options={'headers': {'Authorization': f'Bearer {API_KEY}'}}
-    )
+    st.session_state.client = genai.Client(api_key=API_KEY)
+
+if "chat" not in st.session_state:
+    st.session_state.chat = st.session_state.client.chats.create(model="gemini-2.5-flash")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Purani baatein screen par dikhane ke liye
+# Purani baatein screen par dikhane ke liye loop
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 # User input box
-if user_input := st.chat_input("Hi, kaise ho?"):
+if user_input := st.chat_input("hi dude"):
     # User ka message screen par dikhaein
     with st.chat_message("user"):
         st.markdown(user_input)
     st.session_state.messages.append({"role": "user", "content": user_input})
 
-    try:
-        # CHAT SESSION KE BAJAAY DIRECT RESPONSE (Is se AQ wali key block nahi hogi)
-        response = st.session_state.client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=user_input,
-        )
-        
-        # AI ka response screen par dikhaein
-        with st.chat_message("assistant"):
-            st.markdown(response.text)
-        st.session_state.messages.append({"role": "assistant", "content": response.text})
-        
-    except Exception as e:
-        st.error(f"Oho! Koi masla aaya hai: {e}")
+    # AI se response lein
+    response = st.session_state.chat.send_message(user_input)
+    
+    # AI ka response screen par dikhaein
+    with st.chat_message("assistant"):
+        st.markdown(response.text)
+    st.session_state.messages.append({"role": "assistant", "content": response.text})
