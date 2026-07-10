@@ -1,4 +1,4 @@
-import streamlit as st
+mport streamlit as st
 from google import genai
 
 # Page setting
@@ -6,13 +6,13 @@ st.set_page_config(page_title="Usman's Chatbot", layout="centered")
 st.title("🤖 Usman ka Apna AI Chatbot")
 
 
-API_KEY = "AQ.Ab8RN6Kvg-WP3YgVLcG5OnNqJjW7_dDReMukfeLTdz3-hvhqyw"
+API_KEY = "AQ.Ab8RN6ItvF-3BTRF0aB567GD0dBRtyavnDscN_voowIm6B45yQ"
 
 # Client initialize karein
 if "client" not in st.session_state:
     st.session_state.client = genai.Client(api_key=API_KEY)
 
-
+# Chat session start karein gemini-2.5-flash ke sath
 if "chat" not in st.session_state:
     st.session_state.chat = st.session_state.client.chats.create(model="gemini-2.5-flash")
 
