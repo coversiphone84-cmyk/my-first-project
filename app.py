@@ -7,9 +7,12 @@ st.title("🤖 Usman ka Apna AI Chatbot")
 # Aapki token key
 API_KEY = "AQ.Ab8RN6INVnP-ybwcIcUYrWDALFw42cjtwtpIpurpfjhh_sxSwg"
 
-# YAHAN TABDEELI KI HAI: Client ko token pass karne ka naya tareeqa
+# Dono cheezein aik sath pass kar di hain taaki library khush rahe aur token chal jaye
 if "client" not in st.session_state:
-    st.session_state.client = genai.Client(http_options={'headers': {'Authorization': f'Bearer {API_KEY}'}})
+    st.session_state.client = genai.Client(
+        api_key=API_KEY, 
+        http_options={'headers': {'Authorization': f'Bearer {API_KEY}'}}
+    )
 
 if "chat" not in st.session_state:
     st.session_state.chat = st.session_state.client.chats.create(model="gemini-2.5-flash")
