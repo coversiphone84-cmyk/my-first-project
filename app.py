@@ -5,7 +5,7 @@ from google import genai
 st.set_page_config(page_title="Usman's Chatbot", layout="centered")
 st.title("🤖 Usman ka Apna AI Chatbot")
 
-API_KEY = "AQ.Ab8RN6Il6JMxDaUzbdN0Dc5b2h5JEjj-dk2IcX4W_A1vX8_A6Q"
+API_KEY = "AQ.Ab8RN6LNtkwpiCicdHc6HXmPWxlkDono2fxSVBfonIBuEA2Sug"
 
 
 if "client" not in st.session_state:
